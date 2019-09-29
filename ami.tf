@@ -1,10 +1,10 @@
 data aws_ami image {
   most_recent      = true
-  owners           = ["self", "309956199498", "aws-marketplace"]
+  owners           = ["self", "309956199498", "aws-marketplace", "amazon"]
 
   filter {
-    name   = "product-code"
-    values = ["aw0evgkw8e5c1q413zgy5pjce"]
+    name   = "name"
+    values = ["Windows_Server-2012-R2_RTM-English-64Bit-Base-*"]
   }
 }
 

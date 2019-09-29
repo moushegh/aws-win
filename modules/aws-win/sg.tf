@@ -33,9 +33,9 @@ resource aws_security_group_rule allow_gluster {
 ##allow 443 since i reconfigured ssh to run under 443, thanks to corporate network
 resource aws_security_group_rule allow_https_in_ec2 {
   type              = "ingress"
-  to_port           = 443
+  to_port           = 3389
   protocol          = "tcp"
-  from_port         = 443
+  from_port         = 3389
   cidr_blocks       = ["0.0.0.0/0"]
   security_group_id = aws_security_group.public.id
 }

@@ -1,10 +1,10 @@
 variable client_type {}
 variable client_name {}
 
-module "win._client" {
-  source                  = "./modules/aws-ec2/"
+module "win_client" {
+  source                  = "./modules/aws-win/"
   ec2_type                = var.client_type
-  ec2_ami                 = "ami-07b051dfb24d37ea4"
+  ec2_ami                 = data.aws_ami.image.id
   ec2_name                = var.client_name
   ec2_public_subnet_id    = "${element(data.aws_subnet_ids.public.ids.*, 0)}"
   ec2_private_subnet_id   = "${element(data.aws_subnet_ids.private.ids.*, 0)}"
@@ -14,4 +14,8 @@ module "win._client" {
   zone_id                 = data.aws_route53_zone.selected.id
   source_security_group_id = aws_security_group.gluster.id
 
+}
+
+output "Administrator_Password" {
+    value = "${rsadecrypt(module.win_client.password_data, file("../../../GLOBAL/keys/id_rsa_bam"))}"
 }
