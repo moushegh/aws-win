@@ -16,6 +16,6 @@ module "win_client" {
 
 }
 
-output "Administrator_Password" {
-    value = "${rsadecrypt(module.win_client.password_data, file("../../../GLOBAL/keys/id_rsa_bam"))}"
-}
+#output "Administrator_Password" {
+#    value = "${rsadecrypt(module.win_client.password_data, file("../../../GLOBAL/keys/id_rsa_bam"))}"
+#}
